@@ -78,7 +78,7 @@ function draw() {
   text("Score: "+ score, trex.x,50);
   
   if (gameState===PLAY){
-    score = score + Math.round(getFrameRate()/60);
+    score = score + Math.round(getFrameRate()/40);
    trex.velocityX = (6 + 3*score/100);
    camera.position.x = trex.x
 
@@ -98,6 +98,9 @@ function draw() {
   
     if(obstaclesGroup.isTouching(trex)){
         gameState = END;
+    }
+    if(score === 10){
+      gameState = END;
     }
   }
   else if (gameState === END) {
@@ -135,7 +138,7 @@ function draw() {
 function spawnClouds() {
   //write code here to spawn the clouds
   if (frameCount % 60 === 0) {
-    var cloud = createSprite(600,120,40,10);
+    var cloud = createSprite(trex.x+500,120,40,10);
     cloud.y = Math.round(random(80,120));
     cloud.addImage(cloudImage);
     cloud.scale = 0.5;
