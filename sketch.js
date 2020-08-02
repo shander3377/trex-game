@@ -99,7 +99,7 @@ function draw() {
     if(obstaclesGroup.isTouching(trex)){
         gameState = END;
     }
-    if(score === 10){
+    if(score === 100){
       gameState = END;
     }
   }
